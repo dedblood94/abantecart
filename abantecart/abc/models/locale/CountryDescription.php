@@ -38,7 +38,29 @@ class CountryDescription extends BaseModel
         'name',
         'language_id',
     ];
-
+    protected $rules =[
+       'name'=>[
+           'checks'=>[
+                'string',
+               'between:2,128'
+           ],
+           'messages'=>[
+               'language_key'=> 'error_name',
+                'language_block'=>'localisation/country',
+                'default_text'=>'Country Name must be between 2 and 128 characters!',
+                'section'=>'admin'
+           ],
+       ],
+        'language_id'=>[
+            'checks'=>[
+                'integer',
+                'required'
+            ],
+            'messages'=>[
+                '*'=>['default_text'=>'language_id is not integer']
+            ],
+        ]
+    ];
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');

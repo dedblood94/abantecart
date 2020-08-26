@@ -42,7 +42,6 @@ class WeightClass extends BaseModel
         'date_added',
         'date_modified',
     ];
-
     public function description()
     {
         return $this->hasOne(WeightClassDescription::class, 'weight_class_id')

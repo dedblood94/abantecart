@@ -46,6 +46,36 @@ class ZonesToLocation extends BaseModel
         'date_added',
         'date_modified',
     ];
+    protected $rules =[
+        'country_id'=>[
+            'checks'=>[
+             'required',
+                'integer'
+            ],
+            'messages'=>[
+                '*'=>['default_text'=>'country_id is not integer']
+            ]
+        ],
+        'zone_id'=>[
+            'checks'=>[
+                'required',
+                'integer',
+                'sometimes'
+            ],
+            'messages'=>[
+                '*'=>['default_text'=>'zone_id is not integer']
+            ]
+        ],
+        'location_id'=>[
+            'checks'=>[
+                'required',
+                'integer'
+            ],
+            'messages'=>[
+                '*'=>['default_text'=>'location_id is not integer']
+            ]
+        ]
+    ];
 
     public function zone()
     {

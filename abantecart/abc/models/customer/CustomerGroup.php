@@ -27,11 +27,37 @@ class CustomerGroup extends BaseModel
     protected $dates = [
         'date_added',
         'date_modified',
+
     ];
 
     protected $fillable = [
         'name',
         'tax_exempt',
+    ];
+    protected $rules= [
+
+        'name'=>[
+            'checks'=>[
+                'string',
+                'between:2,64'
+            ],
+            'messages'=>[
+                'language_key'=>'error_name',
+                'language_block'=>'admin/create',
+                'default_text'=>'Name group must be between 2 and 64 characters!',
+                'section'=> '??',
+                ]
+        ],
+        'tax_exempt' =>[
+            'checks'=>[
+                'boolean',
+                'sometimes',
+            ],
+            'messages'=>[
+                '*'=>['default_text'=>'Tax_exempt is not boolean']
+            ]
+        ],
+
     ];
 
     public function customer()

@@ -39,6 +39,36 @@ class WeightClassDescription extends BaseModel
         'title',
         'unit',
     ];
+    protected $rules=[
+        'title'=>[
+            'checks'=>[
+                'string',
+                'between:2,32',
+                'required',
+                'sometimes'
+            ],
+            'messages'=>[
+                'language_key'=> 'error_title',
+                'language_block'=>'localisation/weight_class',
+                'default_text'=>'Title must be between 2 and 32 characters!',
+                'section'=>'admin'
+            ]
+        ],
+        'unit'=>[
+            'checks'=>[
+               'string',
+               'max:4',
+                'required',
+                'sometimes'
+            ],
+            'messages'=>[
+                'language_key'=> 'error_unit',
+                'language_block'=>'localisation/weight_class',
+                'default_text'=>'Unit must be between 0 and 4 characters!',
+                'section'=>'admin'
+            ]
+        ]
+    ];
 
     public function weight_class()
     {

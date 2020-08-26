@@ -8960,7 +8960,7 @@ INSERT INTO `ac_currencies` (`currency_id`, `title`, `code`, `symbol_left`, `sym
 --
 CREATE TABLE `ac_customer_groups` (
   `customer_group_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) COLLATE utf8_general_ci NOT NULL,
+  `name` varchar(64) COLLATE utf8_general_ci NOT NULL,
   `tax_exempt` tinyint(1) NOT NULL DEFAULT '0',
   `date_added` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `date_modified` timestamp NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,

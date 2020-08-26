@@ -20,19 +20,57 @@ namespace unit\models\locale;
 
 use abc\models\locale\Currency;
 use abc\tests\unit\ATestCase;
+use Illuminate\Validation\ValidationException;
 
 class CurrencyModelTest extends ATestCase
 {
 
-    protected function setUp()
+    public function testValidator()
     {
-        //init
-    }
 
-    /**
-     * @return int
-     * @throws \Exception
-     */
+        $currency = new Currency(
+            [
+                'title' => 'somestrinsomestrinsomestrinsomestrin',
+                'code' => 11111111,
+                'symbol_left'=>111111111,
+                'symbol_right'=>111111111,
+                'decimal_place'=> 66666666666666666,
+                'value'=> 15,9,
+                'status'=>'adhefhgesrhgsedfghaerfg'
+            ]
+        );
+        $errors = [];
+        try {
+            $currency->validate();
+        } catch (ValidationException $e) {
+            $errors =$currency->errors()['validation'];
+        }
+
+        var_dump($errors);
+        $this->assertEquals(7, count($errors));
+
+
+        $currency= new Currency(
+            [
+                'title' => '',
+                'code' => '',
+                'symbol_left'=>'somestring',
+                'symbol_right'=>'somestring',
+                'decimal_place'=> '$',
+                'value'=> 15,4,
+                'status'=> 1
+            ]
+        );
+        $errors = [];
+        try {
+            $currency->validate();
+        } catch (ValidationException $e) {
+            $errors = $currency->errors()['validation'];
+        }
+
+        $this->assertEquals(0, count($errors));
+
+    }
     public function testCreateCurrency()
     {
         $currency = new Currency([

@@ -404,7 +404,8 @@ CREATE TABLE `ac_jobs` (
 
 ALTER TABLE `ac_customers`
   CHANGE COLUMN `last_login` `last_login` timestamp NULL DEFAULT NULL,
-  CHANGE COLUMN `customer_group_id` `customer_group_id` INT(11) NULL;
+  CHANGE COLUMN `customer_group_id` `customer_group_id` INT(11) NULL,
+  CHANGE COLUMN `name` `name` VARCHAR(64) NOT NULL;
 
 CREATE INDEX `ac_customers_email_idx` ON `ac_customers` ( `email` );
 
@@ -1649,6 +1650,7 @@ ADD COLUMN `date_added` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 ADD COLUMN `date_modified` timestamp NULL DEFAULT CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
 ADD COLUMN `date_deleted` timestamp NULL,
 ADD COLUMN `stage_id` INT(6) NULL,
+CHANGE COLUMN `image` `image` VARCHAR (64) NULL,
 ADD INDEX `stage_id` (`stage_id` ASC);
 
 ALTER TABLE `ac_length_class_descriptions`

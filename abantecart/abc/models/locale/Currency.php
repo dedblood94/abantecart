@@ -51,7 +51,92 @@ class Currency extends BaseModel
         'decimal_place',
         'value',
         'status',
-        'date_modified',
+
+    ];
+    protected $rules = [
+        'title'=>[
+            'checks'=>[
+                'string',
+                'required',
+                'sometimes',
+                'between:2,32'
+            ],
+            'message'=>[
+                'language_key'=> 'error_title',
+                'language_block'=>'localisation/currency',
+                'default_text'=>'Currency Title required!',
+                'section'=>'admin'
+            ],
+        ],
+        'code'=>[
+            'checks'=>[
+                'required',
+                'string',
+                'max:3',
+                'sometimes'
+            ],
+            'message'=>[
+                'language_key'=> 'error_code',
+                'language_block'=>'localisation/currency',
+                'default_text'=>'Currency Code required!',
+                'section'=>'admin'
+            ]
+        ],
+        'symbol_left'=>[
+            'checks'=>[
+                'string',
+                'between:1,12'
+            ],
+            'message'=>[
+                'language_key'=> 'error_symbol_left',
+                'language_block'=>'localisation/currency',
+                'default_text'=>'Symbol left must be between 1-12 characters',
+                'section'=>'admin'
+            ]
+        ],
+        'symbol_right'=>[
+            'checks'=>[
+                'string',
+                'between:1,12'
+            ],
+            'message'=>[
+                'language_key'=> 'error_symbol_right',
+                'language_block'=>'localisation/currency',
+                'default_text'=>'Symbol right must be between 1-12 characters',
+                'section'=>'admin'
+            ]
+        ],
+        'decimal_place'=>[
+            'checks'=>[
+                'string',
+                'max:1'
+            ],
+            'message'=>[
+                'language_key'=> 'error_decimal_place',
+                'language_block'=>'localisation/currency',
+                'default_text'=>'Decimal place must be 1 characters',
+                'section'=>'??'
+            ]
+        ],
+        'value'=>[
+            'checks'=>[
+                'min:0',
+                'max:15,8'
+            ],
+            'message'=>[
+                'language_key'=>'error_value',
+                'language_blog'=>'localisation/currency',
+                'default_text'=>'Value must be between 0-18.5'
+            ]
+        ],
+        'status'=>[
+            'checks'=>[
+                'integer',
+            ],
+            'message'=>[
+                '*'=>['default_text'=>'status is not integer']
+            ]
+        ],
     ];
 
     public function orders()

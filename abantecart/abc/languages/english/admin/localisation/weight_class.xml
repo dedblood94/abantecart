@@ -53,6 +53,10 @@
 		<value><![CDATA[Weight Unit must be between 1 and 4 characters!]]></value>
 	</definition>
 	<definition>
+		<key>error_value</key>
+		<value><![CDATA[Weight Unit must be between 2 and 15,8 characters!]]></value>
+	</definition>
+	<definition>
 		<key>error_default</key>
 		<value>
 			<![CDATA[Warning: This weight class cannot be deleted as it is currently assigned as the default store weight class!]]></value>

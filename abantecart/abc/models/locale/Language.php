@@ -133,6 +133,100 @@ class Language extends BaseModel
         'sort_order',
         'status',
     ];
+    protected $rules=[
+        'name'=>[
+            'checks'=>[
+                'string',
+                'required',
+                'sometimes',
+                'between:2,32'
+            ],
+            'messages'=>[
+                'language_key'=> 'error_name',
+                'language_block'=>'localisation/language',
+                'default_text'=>'Name must be between 2-32 characters',
+                'section'=>'admin'
+            ]
+        ],
+        'code'=>[
+            'checks'=>[
+                'string',
+                'required',
+                'max:2'
+            ],
+            'messages'=>[
+                'language_key'=> 'error_code',
+                'language_block'=>'localisation/language',
+                'default_text'=>'Language Code must at least 2 characters!',
+                'section'=>'admin'
+            ]
+        ],
+        'locale'=>[
+            'checks'=>[
+                'required',
+                'string',
+            ],
+            'messages'=>[
+                'language_key'=> 'error_locale',
+                'language_block'=>'localisation/language',
+                'default_text'=>'Locale required',
+                'section'=>'admin'
+            ]
+        ],
+        'image'=>[
+            'checks'=>[
+                'string',
+                'between:2,64'
+            ],
+            'messages'=>[
+                'language_key'=> 'error_image',
+                'language_block'=>'localisation/language',
+                'default_text'=>'Image Filename must be between 2 and 64 characters!',
+                'section'=>'admin'
+            ]
+        ],
+        'directory'=>[
+            'checks'=>[
+                'string',
+            ],
+            'messages'=>[
+                'language_key'=> 'error_directory',
+                'language_block'=>'localisation/language',
+                'default_text'=>'Image Filename must be between 2 and 64 characters!',
+                'section'=>'admin'
+            ]
+        ],
+        'filename'=>[
+            'checks'=>[
+                'string',
+                'between:2,64'
+            ],
+            'messages'=>[
+                'language_key'=> 'error_filename',
+                'language_block'=>'localisation/language',
+                'default_text'=>'Filename must be between 2 and 64 characters!!',
+                'section'=>'admin'
+            ]
+        ],
+        'sort_order'=>[
+            'checks'=>[
+                'integer',
+                'required',
+                'sometimes'
+            ],
+            'messages'=>[
+                '*'=>['default_text'=>'sort_order is not integer']
+            ],
+        ],
+        'status'=>[
+            'checks'=>[
+                'integer'
+            ],
+            'messages'=>[
+                '*'=>['default_text'=>'status is not integer']
+            ],
+        ]
+    ];
 
     public function banner_descriptions()
     {

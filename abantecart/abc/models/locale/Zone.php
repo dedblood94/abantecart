@@ -49,6 +49,36 @@ class Zone extends BaseModel
         'status',
         'sort_order',
     ];
+    protected $rules=[
+        'code'=>[
+            'checks'=>[
+                'string',
+                'between:2,32'
+            ],
+            'messages'=>[
+                'language_key'=> 'error_code',
+                'language_block'=>'localisation/zone',
+                    'default_text'=>'Code must be between 2 and 32 characters!',
+                'section'=>'admin'
+            ]
+        ],
+        'status'=>[
+            'checks'=>[
+                'integer'
+            ],
+            'messages'=>[
+                '*'=>['default_text'=>'status is not integer']
+            ]
+        ],
+        'sort_order'=>[
+            'checks'=>[
+                'integer'
+            ],
+            'messages'=>[
+                '*'=>['default_text'=>'sort_order is not integer']
+            ]
+        ]
+    ];
 
     public function country()
     {

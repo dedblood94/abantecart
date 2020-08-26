@@ -43,7 +43,21 @@ class LanguageDefinition extends BaseModel
         'date_added',
         'date_modified',
     ];
-
+    protected $rules = [
+        'language_value'=>[
+            'checks'=>[
+                'string',
+                'required',
+                'sometimes'
+            ],
+            'messages'=>[
+                'language_key'=> 'error_language_value',
+                'language_block'=>'localisation/language_definitions',
+                'default_text'=>'Locale required',
+                'section'=>'admin'
+            ]
+        ]
+    ];
     public function language()
     {
         return $this->belongsTo(Language::class, 'language_id');

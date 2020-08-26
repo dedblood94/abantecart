@@ -76,4 +76,11 @@
     <key>error_zone_to_location</key>
     <value><![CDATA[Warning: This zone cannot be deleted as it is currently assigned to %s zones to locations!]]></value>
   </definition>
+  <definition>
+    <key>error_code</key>
+    <value><![CDATA[Code must be between 2 and 32 characters!]]></value>
+  </definition>
+  <definition>
+    <key></key>
+  </definition>
 </definitions>
